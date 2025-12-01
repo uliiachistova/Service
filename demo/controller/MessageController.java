@@ -10,23 +10,33 @@ public class MessageController {
 
     //curl -X GET http://localhost:8080/messages
     @GetMapping("messages")
-    public ResponseEntity<List<String>> getMessages() { return ResponseEntity.ok(messages); }
+    public ResponseEntity<List<String>> getMessages() { 
+        return ResponseEntity.ok(messages); 
+    }
 
     //curl -X POST -H "Content-Type: application/json" -d "\"Hello\"" http://localhost:8080/messages
     @PostMapping("messages")
-    public ResponseEntity<Void> addMessage(@RequestBody String text) { messages.add(text); return ResponseEntity.accepted().build(); }
+    public ResponseEntity<Void> addMessage(@RequestBody String text) { 
+        messages.add(text); return ResponseEntity.accepted().build(); 
+    }
 
     //curl -X GET http://localhost:8080/messages/0
     @GetMapping("messages/{index}")
-    public ResponseEntity<String> getMessage(@PathVariable int index) { return ResponseEntity.ok(messages.get(index)); }
+    public ResponseEntity<String> getMessage(@PathVariable int index) { 
+        return ResponseEntity.ok(messages.get(index)); 
+    }
 
     //curl -X DELETE http://localhost:8080/messages/0
     @DeleteMapping("messages/{index}")
-    public ResponseEntity<Void> deleteMessage(@PathVariable int index) { messages.remove(index); return ResponseEntity.noContent().build(); }
+    public ResponseEntity<Void> deleteMessage(@PathVariable int index) { 
+        messages.remove(index); return ResponseEntity.noContent().build(); 
+    }
 
     //curl -X PUT -H "Content-Type: application/json" -d "\"New text\"" http://localhost:8080/messages/0
     @PutMapping("messages/{index}")
-    public ResponseEntity<Void> updateMessage(@PathVariable int index, @RequestBody String message) { messages.set(index, message); return ResponseEntity.accepted().build(); }
+    public ResponseEntity<Void> updateMessage(@PathVariable int index, @RequestBody String message) { 
+        messages.set(index, message); return ResponseEntity.accepted().build(); 
+    }
 
     //curl -X GET http://localhost:8080/messages/search/lo
     @GetMapping("messages/search/{text}")
